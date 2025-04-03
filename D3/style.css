@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.bar-no {
+    fill: steelblue;
+}
+
+.bar-yes {
+    fill: orange;
+}
+
+.axis-label {
+    font-size: 14px;
+}
