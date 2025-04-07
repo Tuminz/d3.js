@@ -1,0 +1,91 @@
+html {
+    overflow-y: scroll;
+}
+/* Chart */
+body {
+    font-family: Arial, sans-serif;
+    /* thanh trượt */
+    overflow: auto;
+}
+
+.chart1 {
+    display: none; /* Ẩn tất cả biểu đồ ban đầu */
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+.bar-no {
+    fill: steelblue;
+}
+
+.bar-yes {
+    fill: orange;
+}
+
+.axis-label {
+    font-size: 14px;
+}
+.chart{
+    text-align: center;
+}
+.chart-buttons{
+    justify-content: center;
+    display:flex;
+}
+.chart-buttons button {
+    margin: 0px;
+    padding: 10px 15px;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px;
+}
+.chart-buttons button:hover {
+    background-color: #696f73;
+}
+
+h2{
+    text-align: center;
+}
+
+
+
+/* PAGE */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+h1{
+    /* căn giữa chữ */
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;   /* Căn giữa */
+    gap: 40px;                 /* Khoảng cách giữa các item */
+    background: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    list-style: none;
+  }
+
+.navbar a{
+    /* bỏ dấu gạch dưới trong link */
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+.navbar a:hover{
+    background: rgb(182, 182, 189);
+} 
+
+/* Introduce */
+#introduce{
+    list-style: none;
+    line-height: 30px;
+}

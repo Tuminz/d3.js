@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT D3.JS</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<script>
+    function showChart(number) {
+      // Ẩn tất cả biểu đồ
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById("chart" + i).style.display = "none";
+      }
+      // Hiện biểu đồ được chọn
+      document.getElementById("chart" + number).style.display = "block";
+    }
+    // Mặc định hiển thị biểu đồ 1 khi vào trang
+    window.onload = () => showChart(1);
+  </script>
+
+<body>
+    <nav class="navbar">
+        <li> <a href="/page/home.html">Home</a> </li>
+        <li><a href="/page/introduceTeam.html" >About Team</a></li>
+    </nav>
+    <div class="chart-buttons">
+        <button onclick="showChart(1)">Biểu đồ 1</button>
+        <button onclick="showChart(2)">Biểu đồ 2</button>
+        <button onclick="showChart(3)">Biểu đồ 3</button>
+        <button onclick="showChart(4)">Biểu đồ 4</button>
+        <button onclick="showChart(5)">Biểu đồ 5</button>
+        <button onclick="showChart(6)">Biểu đồ 6</button>
+    </div>
+    <h1><b>PROJECT D3.JS</b></h1>
+    <p>
+        <i>Trang web giúp hiển thị trực quan các biểu đồ trong project.</i>    
+    </p>
+    <h2> <b>CÁC BIỂU ĐỒ</b></h2>
+    <div class="container-chart">
+        <div id="chart1" class="chart">
+            <h2>Tỷ lệ mắc bệnh tim theo giới tính</h2>
+            <svg id="svg1"></svg>
+            <script src="/js/chart1.js"></script>
+        </div>
+        <div id="chart2" class="chart">Nội dung chart 2</div>
+        <div id="chart3" class="chart">Nội dung chart 3</div>
+        <div id="chart4" class="chart">Nội dung chart 4</div>
+        <div id="chart5" class="chart">Nội dung chart 5</div>
+        <div id="chart6" class="chart">Nội dung chart 6</div >
+    </div>
+
+</body>
+</html>
