@@ -33,6 +33,21 @@ body {
     padding: 20px;
 } 
 
+.chart4 {
+    display: none; /* Ẩn ban đầu */
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.bar-exercise-yes {
+    fill: green;
+}
+
+.bar-exercise-no {
+    fill: red;
+}
+
 .chart{
     text-align: center;
 }
