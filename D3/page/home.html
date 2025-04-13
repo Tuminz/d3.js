@@ -18,7 +18,7 @@
       document.getElementById("chart" + number).style.display = "block";
     }
     // Mặc định hiển thị biểu đồ 1 khi vào trang
-    window.onload = () => showChart(3);
+    window.onload = () => showChart(1);
   </script>
 
 <body>
@@ -40,8 +40,9 @@
     <h2> <b>BIỂU ĐỒ</b></h2>
     <div class="container-chart">
         <div id="chart1" class="chart">
-            <h2>Nội dung chart 1</h2>
-            
+            <h2>Tỷ lệ người mắc bệnh tim theo tuổi tác</h2>
+            <svg id="svg1"></svg>
+            <script src="/js/chart1.js"></script>
         </div>
         <div id="chart2" class="chart">
             <h2>Tỷ lệ mắc bệnh tim theo giới tính</h2>
@@ -63,7 +64,11 @@
             <script src="../js/chart4.js"></script>
         </div>        
         <div id="chart5" class="chart">Nội dung chart 5</div>
-        <div id="chart6" class="chart">Nội dung chart 6</div>
+        <div id="chart6" class="chart">
+            <h2>Sự phân bố Cholesterol giữa nam và nữ</h2>
+            <svg id="svg6"></svg>
+            <script src="/js/chart6.js"></script>
+        </div>
     </div>
 </body>
 </html>

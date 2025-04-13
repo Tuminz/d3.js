@@ -8,12 +8,15 @@ body {
     overflow: auto;
 }
 
-.chart2 {
+
+
+.chart {
     display: none; /* Ẩn tất cả biểu đồ ban đầu */
     margin-top: 20px;
     border: 1px solid #ccc;
     padding: 20px;
 }
+
 .bar-no {
     fill: steelblue;
 }
@@ -27,14 +30,12 @@ body {
 }
 
 .chart3 {
-    display: none; /* Ẩn tất cả biểu đồ ban đầu */
     margin-top: 20px;
     border: 1px solid #ccc;
     padding: 20px;
 } 
 
 .chart4 {
-    display: none; /* Ẩn ban đầu */
     margin-top: 20px;
     border: 1px solid #ccc;
     padding: 20px;
