@@ -17,15 +17,6 @@ body {
     padding: 20px;
 }
 
-.bar-group .bar-yes {
-    fill: steelblue; /* Màu xanh cho thanh "Has Disease" */
-}
-
-/* Màu sắc cho cột No Disease (màu cam) */
-.bar-group .bar-no {
-    fill: orange; /* Màu cam cho thanh "No Disease" */
-}
-
 .bar-no {
     fill: steelblue;
 }

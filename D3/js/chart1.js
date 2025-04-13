@@ -55,7 +55,7 @@ d3.csv("/data/project_heart_disease_cleaned.csv").then(data => {
     // Tạo color scale cho các cột
     const colorScale = d3.scaleOrdinal()
         .domain(["No", "Yes"])  // Tên của các loại "No" và "Yes"
-        .range(["orange", "steelblue"]);  // Màu của các thanh
+        .range(["steelblue", "orange"]);  // Màu của các thanh
 
     // Scale
     const x1 = d3.scaleBand()
