@@ -9,13 +9,14 @@ const tooltip = d3.select("body")
     .style("font-size", "14px")
     .style("visibility", "hidden");
 
+
 // Kích thước biểu đồ
 const width = 600;
 const height = 400;
 const margin = { top: 20, right: 30, bottom: 50, left: 100 };
 
 // Chọn thẻ SVG
-const svg = d3.select("#svg1")
+const svg = d3.select("#svg2")
     .attr("width", width)
     .attr("height", height);
 
@@ -61,6 +62,23 @@ d3.csv("/data/project_heart_disease_cleaned.csv").then(data => {
         .call(d3.axisLeft(y))
         .selectAll("text")
         .attr("class", "axis-label");
+
+    // Nhãn trục X
+    svg.append("text")
+    .attr("class", "axis-label")
+    .attr("x", width3 / 2)
+    .attr("y", height3 - 10)
+    .attr("text-anchor", "middle")
+    .text("Giới tính");
+
+    // Nhãn trục Y
+    svg.append("text")
+    .attr("class", "axis-label")
+    .attr("transform", "rotate(-90)")
+    .attr("x", -height3 / 2)
+    .attr("y", 20)
+    .attr("text-anchor", "middle")
+    .text("Số lượng người");
 
     // Vẽ cột chồng
     svg.selectAll(".bar-group")

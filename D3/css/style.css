@@ -8,7 +8,7 @@ body {
     overflow: auto;
 }
 
-.chart1 {
+.chart2 {
     display: none; /* Ẩn tất cả biểu đồ ban đầu */
     margin-top: 20px;
     border: 1px solid #ccc;
@@ -25,6 +25,14 @@ body {
 .axis-label {
     font-size: 14px;
 }
+
+.chart3 {
+    display: none; /* Ẩn tất cả biểu đồ ban đầu */
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+} 
+
 .chart{
     text-align: center;
 }

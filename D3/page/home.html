@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROJECT D3.JS</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <script>
@@ -18,7 +18,7 @@
       document.getElementById("chart" + number).style.display = "block";
     }
     // Mặc định hiển thị biểu đồ 1 khi vào trang
-    window.onload = () => showChart(1);
+    window.onload = () => showChart(3);
   </script>
 
 <body>
@@ -34,19 +34,25 @@
         <button onclick="showChart(5)">Biểu đồ 5</button>
         <button onclick="showChart(6)">Biểu đồ 6</button>
     </div>
+    
     <h1><b>PROJECT D3.JS</b></h1>
-    <p>
-        <i>Trang web giúp hiển thị trực quan các biểu đồ trong project.</i>    
-    </p>
-    <h2> <b>CÁC BIỂU ĐỒ</b></h2>
+    
+    <h2> <b>BIỂU ĐỒ</b></h2>
     <div class="container-chart">
         <div id="chart1" class="chart">
-            <h2>Tỷ lệ mắc bệnh tim theo giới tính</h2>
-            <svg id="svg1"></svg>
-            <script src="/js/chart1.js"></script>
+            <h2>Nội dung chart 1</h2>
+            
         </div>
-        <div id="chart2" class="chart">Nội dung chart 2</div>
-        <div id="chart3" class="chart">Nội dung chart 3</div>
+        <div id="chart2" class="chart">
+            <h2>Tỷ lệ mắc bệnh tim theo giới tính</h2>
+            <svg id="svg2"></svg>
+            <script src="/js/chart2.js"></script>
+        </div>
+        <div id="chart3" class="chart">
+            <h2>Mối liên hệ giữa tình trạng hút thuốc và bệnh tim</h2>
+            <svg id="svg3"></svg>
+            <script src="../js/chart3.js"></script>
+        </div>
         <div id="chart4" class="chart">Nội dung chart 4</div>
         <div id="chart5" class="chart">Nội dung chart 5</div>
         <div id="chart6" class="chart">Nội dung chart 6</div >
