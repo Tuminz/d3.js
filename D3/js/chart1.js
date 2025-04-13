@@ -10,19 +10,19 @@ const tooltip1 = d3.select("body")
     .style("visibility", "hidden")
     .style("z-index", 1000);  // Thêm z-index
 
-const margin = { top: 50, right: 40, bottom: 50, left: 60 },
-      width = 700 - margin.left - margin.right,
-      height = 450 - margin.top - margin.bottom;
+const margin1 = { top: 50, right: 40, bottom: 50, left: 60 },
+      width1 = 700 - margin1.left - margin1.right,
+      height1 = 450 - margin1.top - margin1.bottom;
 
-const svg = d3.select("#svg1")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
+const svg1 = d3.select("#svg1")
+    .attr("width", width1 + margin1.left + margin1.right)
+    .attr("height", height1 + margin1.top + margin1.bottom);
 
-const chart = svg.append("g")
-    .attr("transform", `translate(${margin.left},${margin.top})`);
+const chart1 = svg1.append("g")
+    .attr("transform", `translate(${margin1.left},${margin1.top})`);
 
 d3.csv("/data/project_heart_disease_cleaned.csv").then(data => {
-    function getAgeGroup(age) {
+    function getAgeGroup1(age) {
         age = +age;
         if (age <= 18) return "0-18";
         else if (age <= 35) return "19-35";
@@ -31,64 +31,71 @@ d3.csv("/data/project_heart_disease_cleaned.csv").then(data => {
     }
 
     data.forEach(d => {
-        d.AgeGroup = getAgeGroup(d.Age);
+        d.AgeGroup1 = getAgeGroup1(d.Age);
     });
 
-    const grouped = d3.rollup(data,
+    const grouped1 = d3.rollup(data,
         v => ({
-            No: v.filter(d => d["Heart Disease Status"] === "No").length,
-            Yes: v.filter(d => d["Heart Disease Status"] === "Yes").length
+            No1: v.filter(d => d["Heart Disease Status"] === "No").length,
+            Yes1: v.filter(d => d["Heart Disease Status"] === "Yes").length
         }),
-        d => d.AgeGroup
+        d => d.AgeGroup1
     );
 
-    const ageOrder = ["0-18", "19-35", "36-65", "66+"];
-    const formattedData = ageOrder.map(group => {
-        const entry = grouped.get(group) || { No: 0, Yes: 0 };
+    const ageOrder1 = ["0-18", "19-35", "36-65", "66+"];
+    const formattedData1 = ageOrder1.map(group => {
+        const entry = grouped1.get(group) || { No1: 0, Yes1: 0 };
         return {
-            AgeGroup: group,
-            No: entry.No,
-            Yes: entry.Yes
+            AgeGroup1: group,
+            No1: entry.No1,
+            Yes1: entry.Yes1
         };
     });
 
+    // Tạo color scale cho các cột
+    const colorScale = d3.scaleOrdinal()
+        .domain(["No", "Yes"])  // Tên của các loại "No" và "Yes"
+        .range(["orange", "steelblue"]);  // Màu của các thanh
+
     // Scale
-    const x = d3.scaleBand()
-        .domain(ageOrder)
-        .range([0, width])
+    const x1 = d3.scaleBand()
+        .domain(ageOrder1)
+        .range([0, width1])
         .padding(0.3);
 
-    const y = d3.scaleLinear()
-        .domain([0, d3.max(formattedData, d => d.No + d.Yes)])
+    const y1 = d3.scaleLinear()
+        .domain([0, d3.max(formattedData1, d => d.No1 + d.Yes1)])
         .nice()
-        .range([height, 0]);
+        .range([height1, 0]);
 
     // Axis
-    chart.append("g")
-        .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(x));
+    chart1.append("g")
+        .attr("transform", `translate(0, ${height1})`)
+        .call(d3.axisBottom(x1));
 
-    chart.append("g")
-        .call(d3.axisLeft(y));
+    chart1.append("g")
+        .call(d3.axisLeft(y1));
 
     // Bars
-    chart.selectAll(".bar-group")
-        .data(formattedData)
+    chart1.selectAll(".bar-group1")
+        .data(formattedData1)
         .enter()
         .append("g")
-        .attr("transform", d => `translate(${x(d.AgeGroup)},0)`)
+        .attr("transform", d => `translate(${x1(d.AgeGroup1)},0)`)
         .each(function(d) {
-            const g = d3.select(this);
+            const g1 = d3.select(this);
+            
             // Has Disease
-            g.append("rect")
-                .attr("class", "bar-yes")
+            g1.append("rect")
+                .attr("class", "bar-yes1")
                 .attr("x", 0)
-                .attr("y", y(d.Yes)) // Y vị trí cho "Has Disease"
-                .attr("width", x.bandwidth())
-                .attr("height", height - y(d.Yes)) // Chiều cao cho "Has Disease"
+                .attr("y", y1(d.Yes1)) // Y vị trí cho "Has Disease"
+                .attr("width", x1.bandwidth())
+                .attr("height", height1 - y1(d.Yes1)) // Chiều cao cho "Has Disease"
+                .attr("fill", colorScale("Yes"))  // Đổi màu thanh "Has Disease"
                 .on("mouseover", (event) => {
                     tooltip1.style("visibility", "visible")
-                        .text(`Has Disease: ${d.Yes}`);
+                        .text(`Has Disease: ${d.Yes1}`);
                 })
                 .on("mousemove", (event) => {
                     tooltip1.style("top", `${event.pageY + 10}px`)
@@ -97,15 +104,16 @@ d3.csv("/data/project_heart_disease_cleaned.csv").then(data => {
                 .on("mouseout", () => tooltip1.style("visibility", "hidden"));
 
             // No Disease
-            g.append("rect")
-                .attr("class", "bar-no")
+            g1.append("rect")
+                .attr("class", "bar-no1")
                 .attr("x", 0)
-                .attr("y", y(d.Yes + d.No)) // Y vị trí cho "No Disease"
-                .attr("width", x.bandwidth())
-                .attr("height", height - y(d.No)) // Chiều cao cho "No Disease"
+                .attr("y", y1(d.Yes1 + d.No1)) // Y vị trí cho "No Disease"
+                .attr("width", x1.bandwidth())
+                .attr("height", height1 - y1(d.No1)) // Chiều cao cho "No Disease"
+                .attr("fill", colorScale("No"))  // Đổi màu thanh "No Disease"
                 .on("mouseover", (event) => {
                     tooltip1.style("visibility", "visible")
-                        .text(`No Disease: ${d.No}`);
+                        .text(`No Disease: ${d.No1}`);
                 })
                 .on("mousemove", (event) => {
                     tooltip1.style("top", `${event.pageY + 10}px`)
@@ -115,59 +123,49 @@ d3.csv("/data/project_heart_disease_cleaned.csv").then(data => {
         });
 
     // Legend
-    const legend = svg.append("g")
-        .attr("transform", `translate(${width - 20}, 20)`);
+    const legend1 = svg1.append("g")
+        .attr("transform", `translate(${width1 - 20}, 20)`);
 
-    legend.append("rect")
+    legend1.append("rect")
         .attr("x", -80)
         .attr("width", 15)
         .attr("height", 15)
         .attr("fill", "orange");
 
-    legend.append("text")
+    legend1.append("text")
         .attr("x", -60)
         .attr("y", 33)
         .text("No Disease")
         .style("font-size", "13px");
 
-    legend.append("rect")
+    legend1.append("rect")
         .attr("x", -80)
         .attr("y", 20)
         .attr("width", 15)
         .attr("height", 15)
         .attr("fill", "steelblue");
 
-    legend.append("text")
+    legend1.append("text")
         .attr("x", -60)
         .attr("y", 12)
         .text("Has Disease")
         .style("font-size", "13px");
 
-        chart.append("g")
-        .call(d3.axisLeft(y).ticks(5))  // Hiện các ticks trên trục Y
+    chart1.append("g")
+        .call(d3.axisLeft(y1).ticks(5))  // Hiện các ticks trên trục Y
         .append("text")  // Thêm tên cho trục Y
         .attr("transform", "rotate(-90)")  // Xoay chữ để nó đứng
         .attr("y", -50)  // Đặt vị trí chữ
-        .attr("x", -height / 2)
-        .style("text-anchor", "middle")
-        .text("Số lượng người")  // Tên cột Y là "Số lượng người"
-        .style("font-size", "14px")
-        .style("fill", "#333");chart.append("g")
-        .call(d3.axisLeft(y).ticks(5))  // Hiện các ticks trên trục Y
-        .append("text")  // Thêm tên cho trục Y
-        .attr("transform", "rotate(-90)")  // Xoay chữ để nó đứng
-        .attr("y", -50)  // Đặt vị trí chữ
-        .attr("x", -height / 2)
+        .attr("x", -height1 / 2)
         .style("text-anchor", "middle")
         .text("Số lượng người")  // Tên cột Y là "Số lượng người"
         .style("font-size", "14px")
         .style("fill", "#333");
 
-        svg.append("text")
+    svg1.append("text")
         .attr("class", "x label")
         .attr("text-anchor", "middle")
-        .attr("x", width / 1)
-        .attr("y", height + margin.bottom + 30)
+        .attr("x", width1 / 1)
+        .attr("y", height1 + margin1.bottom + 30)
         .text("Tuổi");
-
 });
