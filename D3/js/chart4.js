@@ -27,7 +27,7 @@ d3.csv("../data/project_heart_disease_cleaned.csv").then(data => {
             NoDisease: v.filter(d => d["Heart Disease Status"] === "No").length,
             HasDisease: v.filter(d => d["Heart Disease Status"] === "Yes").length
         }),
-        d => d["Exercise Habit"]
+        d => d["Exercise Habits"]
     );
 
     // Chuyển dữ liệu từ Map sang Array
