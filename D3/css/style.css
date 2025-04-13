@@ -93,7 +93,27 @@ h1{
 } 
 
 /* Introduce */
-#introduce{
-    list-style: none;
-    line-height: 30px;
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+.member {
+    text-align: center;
+    width: 200px;
+}
+
+.member img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+}
+
+.member-info {
+    margin-top: 10px;
+    font-weight: bold;
 }
