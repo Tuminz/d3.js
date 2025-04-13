@@ -20,7 +20,7 @@ const svg3 = d3.select("#svg3")
     .attr("height", height);
 
 //Đọc dữ liệu từ file gốc
-d3.csv("../data/project_heart_disease_cleaned.csv").then(data => {
+d3.csv("/data/project_heart_disease_cleaned.csv").then(data => {
     //Nhóm dữ liệu theo tình trạng hút thuốc và trạng thái bệnh
     let groupedData = d3.rollup(data,
         v => ({

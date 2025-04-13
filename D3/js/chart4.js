@@ -1,5 +1,5 @@
-// Tạo tooltip (hộp hiển thị thông tin)
-const tooltip = d3.select("body")
+// Tooltip
+const tooltip44 = d3.select("body")
     .append("div")
     .style("position", "absolute")
     .style("background", "rgba(0, 0, 0, 0.7)")
@@ -9,13 +9,13 @@ const tooltip = d3.select("body")
     .style("font-size", "14px")
     .style("visibility", "hidden");
 
-// Kích thước biểu đồ
-const width4 = 600;
-const height4 = 400;
-const margin4 = { top: 20, right: 30, bottom: 50, left: 100 };
+// Kích thước biểu đồ rộng rãi hơn
+const width4 = 700;
+const height4 = 450;
+const margin4 = { top: 30, right: 150, bottom: 60, left: 100 };
 
-// Chọn thẻ SVG
-const svg = d3.select("#svg4")
+// SVG
+const svg4 = d3.select("#svg4")
     .attr("width", width4)
     .attr("height", height4);
 
@@ -49,21 +49,21 @@ d3.csv("../data/project_heart_disease_cleaned.csv").then(data => {
         .range([height4 - margin4.bottom, margin4.top]);
 
     // Vẽ trục X
-    svg.append("g")
+    svg4.append("g")
         .attr("transform", `translate(0,${height4 - margin4.bottom})`)
         .call(d3.axisBottom(x))
         .selectAll("text")
         .attr("class", "axis-label");
 
     // Vẽ trục Y
-    svg.append("g")
+    svg4.append("g")
         .attr("transform", `translate(${margin4.left},0)`)
         .call(d3.axisLeft(y))
         .selectAll("text")
         .attr("class", "axis-label");
 
     // Nhãn trục X
-    svg.append("text")
+    svg4.append("text")
         .attr("class", "axis-label")
         .attr("x", width4 / 2)
         .attr("y", height4 - 10)
@@ -71,7 +71,7 @@ d3.csv("../data/project_heart_disease_cleaned.csv").then(data => {
         .text("Thói quen tập thể dục");
 
     // Nhãn trục Y
-    svg.append("text")
+    svg4.append("text")
         .attr("class", "axis-label")
         .attr("transform", "rotate(-90)")
         .attr("x", -height4 / 2)
@@ -80,7 +80,7 @@ d3.csv("../data/project_heart_disease_cleaned.csv").then(data => {
         .text("Số lượng người");
 
     // Vẽ cột chồng
-    svg.selectAll(".bar-group")
+    svg4.selectAll(".bar-group")
         .data(formattedData)
         .enter()
         .append("g")
@@ -96,15 +96,15 @@ d3.csv("../data/project_heart_disease_cleaned.csv").then(data => {
                 .attr("width", x.bandwidth())
                 .attr("height", y(0) - y(d.HasDisease))
                 .on("mouseover", function (event) {
-                    tooltip.style("visibility", "visible")
+                    tooltip4.style("visibility", "visible")
                         .text(`Has Disease: ${d.HasDisease}`);
                 })
                 .on("mousemove", function (event) {
-                    tooltip.style("top", `${event.pageY - 10}px`)
+                    tooltip4.style("top", `${event.pageY - 10}px`)
                         .style("left", `${event.pageX + 10}px`);
                 })
                 .on("mouseout", function () {
-                    tooltip.style("visibility", "hidden");
+                    tooltip4.style("visibility", "hidden");
                 });
 
             // Vẽ phần "No Disease" (màu xanh)
@@ -115,25 +115,48 @@ d3.csv("../data/project_heart_disease_cleaned.csv").then(data => {
                 .attr("width", x.bandwidth())
                 .attr("height", y(0) - y(d.NoDisease))
                 .on("mouseover", function (event) {
-                    tooltip.style("visibility", "visible")
+                    tooltip4.style("visibility", "visible")
                         .text(`No Disease: ${d.NoDisease}`);
                 })
                 .on("mousemove", function (event) {
-                    tooltip.style("top", `${event.pageY - 10}px`)
+                    tooltip4.style("top", `${event.pageY - 10}px`)
                         .style("left", `${event.pageX + 10}px`);
                 })
                 .on("mouseout", function () {
-                    tooltip.style("visibility", "hidden");
+                    tooltip4.style("visibility", "hidden");
                 });
         });
 
     // Thêm chú thích (Legend)
-    const legend = svg.append("g")
-        .attr("transform", `translate(${width4 - 110}, ${margin4.top})`);
+    const legend = svg4.append("g")
+    .attr("transform", `translate(${width4 - 200}, ${margin4.top + 10})`);
 
-    legend.append("rect").attr("class", "bar-no").attr("width", 20).attr("height", 20);
-    legend.append("text").attr("x", 30).attr("y", 15).text("No Disease").attr("class", "axis-label");
+    // Chú thích "Has Disease"
+    legend.append("rect")
+        .attr("class", "bar-yes")
+        .attr("width", 20)
+        .attr("height", 20)
+        .attr("x", 0)        // Dời hình vuông sang phải (so với nhóm)
+        .attr("y", 0);       // Dòng đầu
 
-    legend.append("rect").attr("class", "bar-yes").attr("width", 20).attr("height", 20).attr("y", 30);
-    legend.append("text").attr("x", 30).attr("y", 45).text("Has Disease").attr("class", "axis-label");
+    legend.append("text")
+        .attr("x", 30)       // Dời text ra xa khỏi rect
+        .attr("y", 15)
+        .text("Has Disease")
+        .attr("class", "axis-label");
+
+    // Chú thích "No Disease"
+    legend.append("rect")
+        .attr("class", "bar-no")
+        .attr("width", 20)
+        .attr("height", 20)
+        .attr("x", 0)
+        .attr("y", 30);      // Dòng dưới
+
+    legend.append("text")
+        .attr("x", 30)
+        .attr("y", 45)
+        .text("No Disease")
+        .attr("class", "axis-label");
+
 });
