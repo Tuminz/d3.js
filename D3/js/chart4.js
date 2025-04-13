@@ -38,7 +38,7 @@ d3.csv("../data/project_heart_disease_cleaned.csv").then(data => {
 
     // Scale cho trục X (Exercise Habit)
     const x = d3.scaleBand()
-        .domain(formattedData.map(d => d.ExerciseHabit))  // Sửa từ d.Exercise thành d.ExerciseHabit
+        .domain(formattedData.map(d => d.ExerciseHabit)) 
         .range([margin4.left, width4 - margin4.right])
         .padding(0.5);
 
