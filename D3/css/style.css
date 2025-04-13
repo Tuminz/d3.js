@@ -70,12 +70,10 @@ h2{
     text-align: center;
 }
 
-
-
 /* PAGE */
 * {
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 h1{
@@ -112,3 +110,4 @@ h1{
     list-style: none;
     line-height: 30px;
 }
+
