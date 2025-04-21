@@ -11,7 +11,7 @@
 <script>
     function showChart(number) {
       // Ẩn tất cả biểu đồ
-      for (let i = 1; i <= 6; i++) {
+      for (let i = 1; i <= 7; i++) {
         document.getElementById("chart" + i).style.display = "none";
       }
       // Hiện biểu đồ được chọn
@@ -33,6 +33,7 @@
         <button onclick="showChart(4)">Biểu đồ 4</button>
         <button onclick="showChart(5)">Biểu đồ 5</button>
         <button onclick="showChart(6)">Biểu đồ 6</button>
+        <button onclick="showChart(7)">Bonus</button>
     </div>
     
     <h1><b>PROJECT D3.JS</b></h1>
@@ -70,6 +71,11 @@
             <h2>Sự phân bố Cholesterol giữa nam và nữ</h2>
             <svg id="svg6"></svg>
             <script src="/js/chart6.js"></script>
+        </div >
+        <div id="chart7" class="chart">
+            <h2>Tỷ lệ mắc bệnh tim theo Nhóm tuổi và Các yếu tố lối sống</h2>
+            <svg id="svg7"></svg>
+            <script src="/js/chart_bonus.js"></script>
         </div >
     </div>
 </body>
